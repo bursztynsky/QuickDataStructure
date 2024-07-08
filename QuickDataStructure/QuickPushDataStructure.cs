@@ -19,13 +19,13 @@ public class QuickPushDataStructure<T> : QuickDataStructure<T> where T : ICompar
                 _head = newNode;
                 _tail = newNode;
 
-                Length++;
+                _length++;
                 return;
             }
 
             _tail!.Next = newNode;
             _tail = newNode;
-            Length++;
+            _length++;
         }
     }
 
@@ -64,9 +64,19 @@ public class QuickPushDataStructure<T> : QuickDataStructure<T> where T : ICompar
                 _head = _head.Next;
             }
 
-            Length--;
+            _length--;
 
             return max;
+        }
+    }
+
+    public override void Clear()
+    {
+        base.Clear();
+
+        lock(_lock)
+        {
+            _tail = null;
         }
     }
 }

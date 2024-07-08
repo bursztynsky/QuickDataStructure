@@ -4,7 +4,7 @@ namespace QuickDataStructures.QuickDataStructure;
 
 public abstract class QuickDataStructure<T> : IQuickDataStructure<T>
 {
-    public int Length { get; protected set; }
+    protected int _length;
     protected Node<T>? _head;
     protected readonly object _lock;
 
@@ -31,20 +31,23 @@ public abstract class QuickDataStructure<T> : IQuickDataStructure<T>
         }
     }
 
-    public void Print()
+    public abstract void Push(T value);
+    public abstract T Pop();
+
+    public int Count()
     {
         lock (_lock)
         {
-            var current = _head;
-            while (current != null)
-            {
-                Console.Write(current.Value + " ");
-                current = current.Next;
-            }
-            Console.WriteLine();
+            return _length;
         }
     }
 
-    public abstract void Push(T value);
-    public abstract T Pop();
+    public virtual void Clear()
+    {
+        lock (_lock)
+        {
+            _head = null;
+            _length = 0;
+        }
+    }
 }

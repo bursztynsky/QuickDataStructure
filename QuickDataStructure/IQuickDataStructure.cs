@@ -2,8 +2,9 @@
 
 public interface IQuickDataStructure<T>
 {
-    public void Push(T value);
-    public T Pop();
-    public string GetValues();
-    void Print();
+    void Push(T value);
+    T Pop();
+    string GetValues();
+    int Count();
+    void Clear(); 
 }

@@ -16,7 +16,7 @@ public class QuickPopDataStructure<T> : QuickDataStructure<T> where T : ICompara
             {
                 newNode.Next = _head;
                 _head = newNode;
-                Length++;
+                _length++;
 
                 return;
             }
@@ -28,7 +28,7 @@ public class QuickPopDataStructure<T> : QuickDataStructure<T> where T : ICompara
             }
             newNode.Next = current.Next;
             current.Next = newNode;
-            Length++;
+            _length++;
         }
     }
 
@@ -43,7 +43,7 @@ public class QuickPopDataStructure<T> : QuickDataStructure<T> where T : ICompara
 
             var result = _head.Value;
             _head = _head.Next;
-            Length--;
+            _length--;
 
             return result;
         }
