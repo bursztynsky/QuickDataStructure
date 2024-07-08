@@ -38,8 +38,8 @@ public class QuickPushDataStructure<T> : QuickDataStructure<T> where T : ICompar
                 throw new InvalidOperationException("Pop operation cannot be performed, because the collection is empty");
             }
 
-            T max = _head.Value;
             var current = _head;
+            T max = _head.Value;
             Node<T>? previous = null;
             Node<T>? maxPrevious = null;
 
@@ -54,6 +54,7 @@ public class QuickPushDataStructure<T> : QuickDataStructure<T> where T : ICompar
                 previous = current;
                 current = current.Next;
             }
+
 
             if (maxPrevious != null)
             {
